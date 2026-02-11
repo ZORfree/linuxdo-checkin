@@ -55,13 +55,13 @@ class NotificationManager:
         if not self.sc3_push_key:
             return False
         
-        match = re.match(r"sct(\d+)t", self.sc3_push_key, re.I)
+        match = re.match(r"sctp(\d+)t", self.sc3_push_key, re.I)
         if not match:
             logger.error("❌ SC3_PUSH_KEY格式错误，未获取到UID，无法使用Server酱³推送")
             return False
         
         uid = match.group(1)
-        url = f"https://{uid}.push.ft07.com/send/{self.sc3_push_key}"
+        url = f"https://{uid}.push.ft07.com/send/{self.sc3_push_key}.send"
         params = {"title": title, "desp": message}
         
         attempts = 5
